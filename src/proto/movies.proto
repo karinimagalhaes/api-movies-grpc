@@ -1,14 +1,15 @@
 syntax = "proto3";
 
 service MovieService{
-    rpc searchMovie (SearchParam) returns (MovieList) {};
+    rpc searchMovie (SearchParam) returns (stream MovieList) {};
+    rpc movieStar (MovieId) returns (stream MovieInformation) {};
 }
 
 message SearchParam{
     required string searchParam = 1;
 }
 
-message MovieDetails{
+message MovieInformation{
     int vote_count = 1;
     double vote_average = 2;
     string title = 3;
@@ -21,5 +22,9 @@ message MovieDetails{
 }
 
 message MovieList{
-    repeated MovieDetails movie = 1 [packed=true];
+    repeated MovieInformation movie = 1 [packed=true];
+}
+
+message MovieId{
+    required integer movieId = 1;
 }
