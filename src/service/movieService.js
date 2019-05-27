@@ -1,6 +1,7 @@
 import request from 'superagent';
 
 let movies = [];
+let pages;
 
 const searchMovies  = async (searchParam, page) => { 
     try{
@@ -11,8 +12,9 @@ const searchMovies  = async (searchParam, page) => {
             .query({page: page})
             .send();
         movies.push(response.body);
-    if(response.body.total_pages-1 !== 0)
-        requestSearch(searchParam, response.body.total_pages-1);
+        pages =  pages ? pages - 1 : response.body.total_pages;
+    if(pages !== 0)
+        await searchMovies(searchParam, pages);
     } catch (error){
         console.log("Search Movies error: " + error);
     }
