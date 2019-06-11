@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+service MovieService{
+    rpc searchMovie (SearchParam) returns (MovieList) {};
+}
+
+message SearchParam{
+    required string searchParam = 1;
+    required int32 page = 2;
+}
+
+message MovieInformation{
+    int32 vote_count = 1;
+    double vote_average = 2;
+    string title = 3;
+    double popularity = 4;
+    string original_language = 5;
+    string original_title = 6;
+    string overview = 7;
+    string release_date = 8;
+    string id = 9;
+}
+
+message MovieList{
+    repeated MovieInformation movies = 1;
+}
+
+message MovieId{
+    required int32 movieId = 1;
+}
