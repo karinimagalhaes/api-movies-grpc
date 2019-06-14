@@ -1,0 +1,5 @@
+--reporter spec
+--slow 5000
+--timeout 999999
+--colors
+--require babel-core/register
