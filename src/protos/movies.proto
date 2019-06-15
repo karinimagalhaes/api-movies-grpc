@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 service MovieService{
-    rpc searchMovie (SearchParam) returns (MovieList) {};
+    rpc searchMovie (SearchParam) returns ( stream MovieList ) {};
 }
 
 message SearchParam{
