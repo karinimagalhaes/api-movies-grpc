@@ -1,14 +1,17 @@
+// import path from "path";
+// import Mali from "mali";
+// import searchMovieRequest from "./src/requests/movieRequest.js";
+
 const path = require("path");
 const Mali = require("mali");
-const searchMovieRequest = require("./src/requests/movieRequest.js");
+const searchMovieDbProvider = require("./src/requests-providers/moviedb-provider.js");
 
 const PROTO_PATH = path.resolve(__dirname, "./src/protos/movies.proto");
-
 
 const searchMovie = async ctx => {
 
     console.log("Request received.");
-    let listMovies = await searchMovieRequest(ctx.request.req.searchParam, ctx.request.req.page);
+    let listMovies = await searchMovieDbProvider(ctx.request.req.movieName, ctx.request.req.page);
     let movies = [];
 
     for (let index = 0; index < listMovies.length; index++) {

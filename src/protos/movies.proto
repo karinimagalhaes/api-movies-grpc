@@ -5,7 +5,7 @@ service MovieService{
 }
 
 message SearchParam{
-    required string searchParam = 1;
+    required string movieName = 1;
     required int32 page = 2;
 }
 
