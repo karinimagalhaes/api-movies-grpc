@@ -11,6 +11,7 @@ const PROTO_PATH = path.resolve(__dirname, "./src/protos/movies.proto");
 const searchMovie = async ctx => {
 
     console.log("Request received.");
+    console.log("page: " + ctx.request.req.page);
     let listMovies = await searchMovieDbProvider(ctx.request.req.movieName, ctx.request.req.page);
     let movies = [];
 

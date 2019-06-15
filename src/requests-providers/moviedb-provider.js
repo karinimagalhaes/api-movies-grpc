@@ -12,10 +12,11 @@ const { MOVIE_BASE_URI } = process.env;
 const { API_KEY_MOVIE } = process.env;
 
 let movies = [];
-let pages;
+let pages = 1;
 let movieDb;
 
-const searchMovieDbProvider  = async (movieName, page) => { 
+const searchMovieDbProvider = async (movieName, page) => { 
+    console.log("page req: " + page)
     try{
             let response = await request
             .get(`${MOVIE_BASE_URI}/search/movie`)
@@ -24,13 +25,13 @@ const searchMovieDbProvider  = async (movieName, page) => {
             .query({page: page})
             .send();
         movies.push(response.body.results);
-
+        console.log("total pages: " + response.body.total_pages, "pages: " + pages)
         if(pages !== response.body.total_pages){
             pages++;
             await searchMovieDbProvider(movieName, pages);
         }
     } catch (error) {
-        console.error(error);
+        console.error(error)
     }
 
     return _.flatten(movies);
