@@ -5,6 +5,7 @@
 const path = require("path");
 const Mali = require("mali");
 const searchMovie = require("./src/service/search-sync");
+const searchMovieAsync = require("./src/service/search-async");
 
 const PROTO_PATH = path.resolve(__dirname, "./src/protos/movies.proto");
 
@@ -13,7 +14,7 @@ const main = () => {
         defaults: true
     });
 
-    app.use({searchMovie});
+    app.use({searchMovie, searchMovieAsync});
 
     app.start("127.0.0.1:5053");
 
