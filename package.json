@@ -14,7 +14,7 @@
     "@grpc/proto-loader": "^0.3.0",
     "chai": "^4.2.0",
     "dotenv": "^8.0.0",
-    "grpc": "^1.17.0",
+    "grpc": "^1.24.9",
     "grpc-caller": "^0.12.0",
     "lodash": "^4.17.14",
     "mali": "^0.9.2",
